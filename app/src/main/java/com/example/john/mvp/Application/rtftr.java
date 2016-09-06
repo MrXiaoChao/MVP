@@ -9,9 +9,7 @@ public class rtftr {
             this.equals("sds");
             //adjasljdsla
             //dffdf
-            //abc
-            //121464
-            //asdlkasjdkljaklsdddddddddddddddddddddddddddddd
+            //sdsdadadadsad
         }
     }
 }
