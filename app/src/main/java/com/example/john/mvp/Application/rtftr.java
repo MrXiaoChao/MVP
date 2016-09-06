@@ -6,7 +6,7 @@ package com.example.john.mvp.Application;
 public class rtftr {
     private  void abc(){
         if (true){
-
+            this.equals("sds");
         }
     }
 }
