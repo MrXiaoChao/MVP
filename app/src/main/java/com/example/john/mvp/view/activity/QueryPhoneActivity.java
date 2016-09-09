@@ -43,7 +43,13 @@ public class QueryPhoneActivity extends Activity implements QueryPhoneView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_queryphone);
         ButterKnife.bind(this);
+        initview();
+    }
+
+    private void initview() {
         queryPhonePresenter = new QueryPhonePresenterImpl(this);
+        dialog = new ProgressDialog(QueryPhoneActivity.this);
+        dialog.setMessage("正在加载中...");
     }
 
     @OnClick(R.id.btn_query)
@@ -63,8 +69,6 @@ public class QueryPhoneActivity extends Activity implements QueryPhoneView {
 
     @Override
     public void showLoading() {
-        dialog = new ProgressDialog(QueryPhoneActivity.this);
-        dialog.setMessage("正在加载中...");
         dialog.show();
     }
 
@@ -84,5 +88,10 @@ public class QueryPhoneActivity extends Activity implements QueryPhoneView {
     @Override
     public String getPhoneNub() {
         return nub = etQueryphone.getText().toString().trim();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }
