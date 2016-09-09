@@ -3,7 +3,7 @@ package com.example.john.mvp.bean;
 /**
  * Created by john on 2016/9/8.
  */
-public class QueryPhone {
+public class QueryPhoneInfo {
     private String resultcode;
     private String reason;
     private ResultBean result;
