@@ -6,4 +6,5 @@ package com.example.john.mvp.presenter;
 public interface QueryPhonePresenter {
     //定义一个方法去model层去取数据
     void getData();
+    void onDestroy();
 }

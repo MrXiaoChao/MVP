@@ -2,7 +2,9 @@ package com.example.john.mvp.view.activity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -32,9 +34,13 @@ public class QueryPhoneActivity extends Activity implements QueryPhoneView {
     TextView tvCompany;
     @BindView(R.id.tv_card)
     TextView tvCard;
+
+    public QueryPhonePresenter queryPhonePresenter;
     @BindView(R.id.btn_query)
     Button btnQuery;
-    public QueryPhonePresenter queryPhonePresenter;
+    @BindView(R.id.btn_SFZ)
+    Button btnSFZ;
+
     private String nub;
     private ProgressDialog dialog;
 
@@ -52,10 +58,6 @@ public class QueryPhoneActivity extends Activity implements QueryPhoneView {
         dialog.setMessage("正在加载中...");
     }
 
-    @OnClick(R.id.btn_query)
-    public void onClick() {
-        queryPhonePresenter.getData();
-    }
 
     @Override
     public void setPhoneInfo(QueryPhoneInfo info) {
@@ -74,7 +76,7 @@ public class QueryPhoneActivity extends Activity implements QueryPhoneView {
 
     @Override
     public void hideLoading() {
-        if (dialog.isShowing()){
+        if (dialog.isShowing()) {
             dialog.dismiss();
         }
     }
@@ -82,7 +84,7 @@ public class QueryPhoneActivity extends Activity implements QueryPhoneView {
 
     @Override
     public void showError() {
-        Toast.makeText(QueryPhoneActivity.this,"出错了",Toast.LENGTH_SHORT).show();
+        Toast.makeText(QueryPhoneActivity.this, "出错了", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -93,5 +95,20 @@ public class QueryPhoneActivity extends Activity implements QueryPhoneView {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        queryPhonePresenter.onDestroy();
+    }
+
+
+    @OnClick({R.id.btn_query, R.id.btn_SFZ})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btn_query:
+                queryPhonePresenter.getData();
+                break;
+            case R.id.btn_SFZ:
+                Intent intent =new Intent(QueryPhoneActivity.this,AbcActivity.class);
+                startActivity(intent);
+                break;
+        }
     }
 }

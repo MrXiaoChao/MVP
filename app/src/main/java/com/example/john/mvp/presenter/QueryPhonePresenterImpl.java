@@ -24,6 +24,11 @@ public class QueryPhonePresenterImpl implements QueryPhonePresenter, OnQueryPhon
     }
 
     @Override
+    public void onDestroy() {
+        this.mqueryPhoneView=null;
+    }
+
+    @Override
     public void OnSuccess(QueryPhoneInfo queryPhoneInfo) {
         mqueryPhoneView.setPhoneInfo(queryPhoneInfo);
         mqueryPhoneView.hideLoading();
