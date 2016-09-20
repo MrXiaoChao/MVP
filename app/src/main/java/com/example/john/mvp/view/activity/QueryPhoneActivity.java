@@ -105,10 +105,7 @@ public class QueryPhoneActivity extends Activity implements QueryPhoneView {
             case R.id.btn_query:
                 queryPhonePresenter.getData();
                 break;
-            case R.id.btn_SFZ:
-                Intent intent =new Intent(QueryPhoneActivity.this,AbcActivity.class);
-                startActivity(intent);
-                break;
+
         }
     }
 }
